@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { SafeAreaView, View } from 'react-native'
+import { useRouter } from 'expo-router'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -7,6 +8,7 @@ import { Text } from '@/components/ui/text'
 import { supabase } from '@/lib/supabase'
 
 export default function LoginScreen() {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -55,6 +57,10 @@ export default function LoginScreen() {
 
         <Button onPress={handleLogin} disabled={loading}>
           <Text>{loading ? 'Signing in…' : 'Sign in'}</Text>
+        </Button>
+
+        <Button variant="ghost" className="mt-4" onPress={() => router.replace('/(auth)/signup')}>
+          <Text className="text-muted-foreground">Don't have an account? Sign up</Text>
         </Button>
       </View>
     </SafeAreaView>
