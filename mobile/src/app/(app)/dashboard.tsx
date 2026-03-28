@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ActivityIndicator, SafeAreaView, ScrollView, View } from 'react-native'
+import { ActivityIndicator, ScrollView, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -90,26 +91,26 @@ export default function DashboardScreen() {
               <CardTitle>Subscription</CardTitle>
             </CardHeader>
             <CardContent className="gap-2">
-              <View className="flex-row justify-between">
-                <Text className="text-muted-foreground">Plan</Text>
-                <Text className="font-medium">{subscription.plan.name}</Text>
+              <View className="flex-row justify-between gap-4">
+                <Text className="text-muted-foreground shrink-0">Plan</Text>
+                <Text className="font-medium flex-1 text-right">{subscription.plan.name}</Text>
               </View>
-              <View className="flex-row justify-between">
-                <Text className="text-muted-foreground">Status</Text>
-                <Text className="font-medium capitalize">{subscription.subscription.status}</Text>
+              <View className="flex-row justify-between gap-4">
+                <Text className="text-muted-foreground shrink-0">Status</Text>
+                <Text className="font-medium capitalize text-right">{subscription.subscription.status}</Text>
               </View>
-              <View className="flex-row justify-between">
-                <Text className="text-muted-foreground">Amount</Text>
-                <Text className="font-medium">
+              <View className="flex-row justify-between gap-4">
+                <Text className="text-muted-foreground shrink-0">Amount</Text>
+                <Text className="font-medium text-right">
                   {(subscription.plan.amount / 100).toLocaleString('en-NG', {
                     style: 'currency',
                     currency: subscription.plan.currency,
                   })}
                 </Text>
               </View>
-              <View className="flex-row justify-between">
-                <Text className="text-muted-foreground">Next payment</Text>
-                <Text className="font-medium">
+              <View className="flex-row justify-between gap-4">
+                <Text className="text-muted-foreground shrink-0">Next payment</Text>
+                <Text className="font-medium text-right">
                   {new Date(subscription.subscription.next_payment_date).toLocaleDateString()}
                 </Text>
               </View>
